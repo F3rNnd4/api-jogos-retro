@@ -8,7 +8,7 @@ import authMiddleware from '../middleware/authMiddleware.js';
 const router = express.Router();
 
 // Rotas públicas
-router.use('auth', authRouter);
+router.use('/auth', authRouter);
 
 // Rotas protegidas
 router.use(authMiddleware);
