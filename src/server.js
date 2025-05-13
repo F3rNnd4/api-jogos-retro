@@ -2,7 +2,7 @@ import express from "express";
 import { config } from "dotenv";
 import cors from "cors"; // Importa o middleware CORS
 
-import routes from './routes/index.routes.js';
+import routes from "./routes/index.routes.js";
 
 config(); // Carrega variáveis de ambiente do arquivo .env
 const port = process.env.PORT || 4001; // Define a porta do servidor
@@ -18,4 +18,10 @@ app.use("/", routes);
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`🐹Servidor rodando na porta ${port} da Jajade🐹`);
+  console.log(`🌐 URL: http://localhost:${port}`);
+});
+
+process.on("SIGINT", () => {
+  console.log("\n👋 Servidor encerrado com sucesso!");
+  process.exit(0);
 });

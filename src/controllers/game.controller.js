@@ -1,6 +1,7 @@
 import GameModel from "../models/game.model.js";
 
 class GameController {
+  // GET /game
   async findAll(req, res) {
     try {
       const games = await GameModel.findAll();
