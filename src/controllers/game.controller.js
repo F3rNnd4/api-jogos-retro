@@ -3,8 +3,14 @@ import GameModel from "../models/game.model.js";
 class GameController {
   // GET /game
   async findAll(req, res) {
+    const { name, platform } = req.query;
+
+    // console.log("Nome ", name);
+    // console.log("Plataforma ", platform);
+    
+
     try {
-      const games = await GameModel.findAll();
+      const games = await GameModel.findAll(name, platform);
 
       return res.status(200).json(games);
     } catch (error) {
@@ -36,12 +42,11 @@ class GameController {
 
       return res.status(201).json({
         message: "New game created successfully!",
-        newGame
+        newGame,
       });
-
     } catch (error) {
       console.error("Error creating new game!", error);
-      res.status(500).json({ message: "Error creating new game!", error});
+      res.status(500).json({ message: "Error creating new game!", error });
     }
   }
 }
